@@ -1,0 +1,47 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model List<appCRUD.Models.employee>;
+
+<div class="row">
+    <div class="col-sm-8 offset-sm-2">
+        <h2>List of Employees</h2>
+        <a asp-controller="Employee" asp-action="Create" class="btn btn-success">Create</a>
+        <table class"table table-bordered">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Full Name</th>
+                    <th>Mail</th>
+                    <th>Hiring</th>
+                    <th>Active</th>
+                    <th>
+                        
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var item in Model)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.FullName</td>
+                        <td>@item.Mail</td>
+                        <td>@item.Hiring.ToString("dd/MM/yyy")</td>
+                        <td>@(item.IsActive? "Y":"N")</td>
+                        <td>
+                            <a asp-controller="Employee"
+                               asp-action="Edit"
+                               asp-route-idEmployee="@item.Id"
+                               class="btn btn-primary">
+                               Edit</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>
